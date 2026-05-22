@@ -19,6 +19,10 @@ php artisan view:cache
 echo "🗄️  Running database migrations..."
 php artisan migrate --force
 
+# === Seed database ===
+echo "🌱 Seeding database..."
+php artisan db:seed --force
+
 # === Create storage symlink ===
 echo "🔗 Creating storage symlink..."
 php artisan storage:link --force 2>/dev/null || true
