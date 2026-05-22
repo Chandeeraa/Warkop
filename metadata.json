@@ -1,0 +1,6 @@
+{
+  "name": "Modern Traditional Warkop POS",
+  "description": "Sistem Kasir (POS) dan Dashboard Keuangan modern dengan estetika tradisional untuk Warkop. Menyediakan pencatatan penjualan, pengeluaran harian harian, laporan harian laba rugi, dan pengelolaan otomatis persediaan bahan baku.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
