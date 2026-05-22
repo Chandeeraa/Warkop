@@ -8,5 +8,5 @@ class Product extends Model
 {
     protected $keyType = 'string';
     public $incrementing = false;
-    protected $fillable = ['id', 'name', 'price', 'category', 'icon', 'recipe_inventory_id', 'recipe_deduct_amount'];
+    protected $fillable = ['id', 'name', 'price', 'category', 'icon', 'recipe_inventory_id', 'recipe_deduct_amount', 'is_best_seller'];
 }

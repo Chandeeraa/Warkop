@@ -7,7 +7,8 @@ import {
   Compass, 
   Heart, 
   Sparkles, 
-  Smartphone 
+  Smartphone, 
+  Star 
 } from 'lucide-react';
 
 interface LandingPageProps {
@@ -15,6 +16,18 @@ interface LandingPageProps {
 }
 
 export const LandingPage: React.FC<LandingPageProps> = ({ onOpenPOS }) => {
+  const [bestSellers, setBestSellers] = React.useState([] as any[]);
+
+  React.useEffect(() => {
+    fetch('/api/products')
+      .then(res => res.json())
+      .then(data => {
+        const filtered = data.filter((p: any) => p.is_best_seller);
+        setBestSellers(filtered);
+      })
+      .catch(console.error);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#F0EBE1] font-sans flex flex-col items-center justify-between text-[#32170d] select-none p-0 md:p-6">
       
@@ -74,10 +87,21 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenPOS }) => {
 
                 <div className="bg-white border border-[#967259]/15 px-4 py-3 rounded-xs flex items-center space-x-3 shadow-3xs">
                   <Heart className="h-4 w-4 text-[#feb300]" />
-                  <div>
-                    <span className="text-[9px] font-bold text-stone-400 uppercase tracking-wider block">Seduhan Favorit</span>
-                    <span className="text-xs font-serif font-bold text-[#32170d]">Kopi Robusta & Kopi Susu Mantap</span>
-                  </div>
+                <div>
+                  <span className="text-[9px] font-bold text-stone-400 uppercase tracking-wider block">Seduhan Favorit</span>
+                  {bestSellers.length === 0 ? (
+                    <span className="text-xs font-serif font-bold text-[#32170d]">Tidak ada best seller</span>
+                  ) : (
+                    <ul className="list-none space-y-1">
+                      {bestSellers.map(p => (
+                        <li key={p.id} className="flex items-center space-x-1 text-xs font-serif font-bold text-[#32170d]">
+                          <Star className="h-3 w-3 text-[#feb300]" />
+                          <span>{p.name}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
                 </div>
               </div>
             </div>

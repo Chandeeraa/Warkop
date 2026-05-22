@@ -3,7 +3,7 @@ export interface Product {
   name: string;
   price: number;
   category: string;
-  icon: string; // lucide-react icon name
+  is_best_seller?: boolean;
   recipe_inventory_id?: string | null;
   recipe_deduct_amount?: number | null;
 }
