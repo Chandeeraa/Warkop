@@ -12,6 +12,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Trust Railway's reverse proxy so Laravel generates correct HTTPS URLs
+        $middleware->trustProxies(at: '*');
+
         $middleware->alias([
             'session.auth' => \App\Http\Middleware\EnsureUserIsAuthenticated::class,
         ]);
