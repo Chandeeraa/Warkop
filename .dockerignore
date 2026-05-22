@@ -1,0 +1,49 @@
+# Dependencies
+/vendor
+/node_modules
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+/tests
+phpunit.xml
+.phpunit.result.cache
+/coverage
+
+# Docs & Config files not needed in production
+README.md
+README.laravel.md
+.editorconfig
+metadata.json
+
+# Environment files (Railway injects env vars)
+.env
+.env.example
+.env.laravel.example
+
+# Docker (don't copy docker context into itself)
+Dockerfile
+docker-compose*.yml
+
+# Build artifacts (we build fresh inside Docker)
+/public/build
+/public/hot
+
+# Storage (will be created at runtime)
+/storage/framework/cache/data/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/logs/*
